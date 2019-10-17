@@ -1,17 +1,20 @@
-console.log('main');
-var sqldb = require('./sqldb');
-var db = sqldb.db;
-var sqlFilterXml2Json = sqldb.sqlFilterXml2Json;
+#!/usr/bin/env node
+"use strict";
 
-var stmt = `select idMovie, c00, c08, c20 from movie where c00 like '%star%' order by idMovie desc limit 2`;
-console.log(stmt);
-db.allAsync(stmt)
-  .then(val => {
-    return sqlFilterXml2Json(val);
-  })
-  .then(val => {
-    console.log(val);
-  })
-  .catch(err => {
-    console.log(JSON.stringify(err));
+const getData = require("./getdata");
+const commander = require("commander");
+const program = new commander.Command();
+const { description, version } = require("./package.json");
+
+program
+  .description(description)
+  .version(version, "-v, --version", "show version number")
+
+program
+  .command("search <name>")
+  .description("sqlite3 select test")
+  .action((name) => {
+    getData(name);
   });
+
+program.parse(process.argv);

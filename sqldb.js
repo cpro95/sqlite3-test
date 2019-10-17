@@ -26,7 +26,9 @@ const db_close = () => {
   });
 };
 
-console.log('sqlite3 test starting...');
+// console.log('sqlite3 test starting...');
+// db_open 에서  new sqlite3.Database 로 db 객체를 생성해야
+// db.getAsync 같이 프로토타입으로 함수를 생성할 수 있다.
 db_open();
 
 db.getAsync = function(sql) {
@@ -183,5 +185,6 @@ const sqlFilterXml2Json = movies => {
 
 module.exports = {
   db,
+  db_close,
   sqlFilterXml2Json
 };

@@ -1,16 +1,20 @@
 {
   "name": "sqlite3-test",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "sqlite3 test with nodejs",
+  "main": "main.js",
+  "bin": {
+    "db": "main.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "cpro95@gmail.com",
+  "license": "MIT",
   "dependencies": {
-    "xml2json-light": "^1.0.6",
-    "sqlite3": "^4.1.0"
+    "commander": "^3.0.2",
+    "sqlite3": "^4.1.0",
+    "xml2json-light": "^1.0.6"
   }
 }
